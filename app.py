@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="templates")
 
 # List of common diseases and their associated symptoms and medicines
 diseases = {
@@ -41,14 +41,19 @@ def diagnose():
                 for medicine in diseases[disease]["medicines"]:
                     message += "- " + medicine + "<br>"
         return message
-    return render_template("diagnose.html")
+    return render_template("diagnose.html", diseases=diseases)
 
 # Submit disease page
 @app.route("/submit_disease", methods=["GET", "POST"])
 def submit_disease():
     if request.method == "POST":
-        disease = request.form.get("disease")
+        disease_name = request.form["disease_name"]
         symptoms = request.form.getlist("symptoms")
         medicines = request.form.getlist("medicines")
-        if disease in diseases:
-            message = f"{disease} already exists in the database."
+        diseases[disease_name] = {"symptoms": symptoms, "medicines": medicines}
+        message = "Disease added successfully."
+        return render_template("submit_disease.html", message=message)
+    return render_template("submit_disease.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
