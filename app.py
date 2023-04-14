@@ -1,10 +1,8 @@
 from flask import Flask, request, render_template
 
-<<<<<<< HEAD
-app = Flask(__name__,template_folder="templates")
-=======
+
 app = Flask(__name__,template_folder='templates')
->>>>>>> 08e87b7fa9271d2c51790dc21a51b5b9c85e3dca
+
 
 # List of common diseases and their associated symptoms and medicines
 diseases = {
