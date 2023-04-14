@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates')
 
 # List of common diseases and their associated symptoms and medicines
 diseases = {
