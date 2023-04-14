@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Add New Disease</h1>
+  <form method="POST" action="{{ url_for('add_disease') }}">
+    <div class="form-group">
+      <label for="disease_name">Disease Name:</label>
+      <input type="text" class="form-control" id="disease_name" name="disease_name" required>
+    </div>
+    <div class="form-group">
+      <label for="medicine_1">Medicine 1:</label>
+      <input type="text" class="form-control" id="medicine_1" name="medicines[]" required>
+    </div>
+    <div class="form-group">
+      <label for="medicine_2">Medicine 2:</label>
+      <input type="text" class="form-control" id="medicine_2" name="medicines[]">
+    </div>
+    <div class="form-group">
+      <label for="medicine_3">Medicine 3:</label>
+      <input type="text" class="form-control" id="medicine_3" name="medicines[]">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Disease</button>
+  </form>
+</div>
+{% endblock %}

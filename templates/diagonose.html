@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diagnostic System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Diagnostic System</h1>
+    <p>Please select your symptoms below:</p>
+    <form method="POST">
+      <input type="checkbox" name="symptoms" value="fever"> Fever<br>
+      <input type="checkbox" name="symptoms" value="cough"> Cough<br>
+      <input type="checkbox" name="symptoms" value="sore throat"> Sore throat<br>
+      <input type="checkbox" name="symptoms" value="body aches"> Body aches<br>
+      <input type="checkbox" name="symptoms" value="shortness of breath"> Shortness of breath<br>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+    {% if message %}
+      <br>
+      <p>{{ message|safe }}</p>
+    {% endif %}
+  </body>
+</html>
